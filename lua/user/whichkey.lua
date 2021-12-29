@@ -84,8 +84,9 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
+
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
--- ["w"] = { "<cmd>w!<CR>", "Save" },
+  ["m"] = { ":MaximizerToggle<CR>", 'Maximizer' },
   ["q"] = { ":q<CR>", "Quit"},
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
@@ -182,10 +183,13 @@ local mappings = {
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    o = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    f = { "<cmd>Telescope find_files<cr>", "Find file" },
+    r = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
+    t = { "<cmd>Telescope live_grep<cr>", "Text" }
   },
 
   t = {
