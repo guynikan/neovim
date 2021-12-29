@@ -86,7 +86,7 @@ local mappings = {
   },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 -- ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
+  ["q"] = { ":q<CR>", "Quit"},
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
@@ -128,9 +128,18 @@ local mappings = {
     },
   },
 
+  T = {
+    name = "+Trouble",
+    r = { "<cmd>Trouble lsp_references<cr>", "References" },
+    f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+    d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnosticss" },
+    l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+    q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnosticss" },
+  },
+
   w = {
     name = "+Windows",
-    q = { ":q<CR>", "Quit"},
     h = { ":sp<CR>", "Split horizontal" },
     v = { ":vsp<CR>", "Split vertical" }
   },
@@ -160,7 +169,7 @@ local mappings = {
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
     q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    -- s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
