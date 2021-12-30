@@ -17,6 +17,11 @@ vim.cmd [[
     autocmd!
     autocmd FileType markdown setlocal wrap
     autocmd FileType markdown setlocal spell
+    autocmd FileType markdown setlocal spelllang=en,pt_br
+    autocmd FileType markdown setlocal spellfile=~/.local/share/nvim/site/pack/packer/start/vim-spell-pt-br/spell/pt.utf-8.add
+    autocmd FileType markdown setlocal spellfile+=~/.config/nvim/spell/en.utf-8.add
+
+    autocmd FileType markdown setlocal foldlevel=99
   augroup end
 
   augroup _auto_resize
