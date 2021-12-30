@@ -3,6 +3,22 @@ if not status_ok then
 	return
 end
 
+-- Color table for highlights
+-- stylua: ignore
+local colors = {
+  bg       = '#202328',
+  fg       = '#bbc2cf',
+  yellow   = '#ECBE7B',
+  cyan     = '#008080',
+  darkblue = '#081633',
+  green    = '#98be65',
+  orange   = '#FF8800',
+  violet   = '#a9a1e1',
+  magenta  = '#c678dd',
+  blue     = '#51afef',
+  red      = '#ec5f67',
+}
+
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
@@ -26,15 +42,47 @@ local diff = {
 
 local mode = {
 	"mode",
-	fmt = function(str)
-		return "-- " .. str .. " --"
-	end,
+  fmt =  function(str)
+    -- auto change color according to neovims mode
+    local mode_color = {
+      n = colors.blue,
+      i = colors.green,
+      v = colors.magenta,
+      [''] = colors.magenta,
+      V = colors.magenta,
+      c = colors.yellow,
+      no = colors.red,
+      s = colors.orange,
+      S = colors.orange,
+      [''] = colors.orange,
+      ic = colors.yellow,
+      R = colors.violet,
+      Rv = colors.violet,
+      cv = colors.red,
+      ce = colors.red,
+      r = colors.cyan,
+      rm = colors.cyan,
+      ['r?'] = colors.cyan,
+      ['!'] = colors.red,
+      t = colors.red,
+    }
+    vim.api.nvim_command('hi! LualineMode guifg=' .. mode_color[vim.fn.mode()] .. ' guibg=' .. colors.bg)
+    return str
+  end,
+  color = 'LualineMode',
+  padding = { left = 1, right = 1 },
 }
 
 local filetype = {
 	"filetype",
 	icons_enabled = false,
 	icon = nil,
+}
+
+local filename = {
+  "filename",
+  icons_enabled = false,
+  icon = nil,
 }
 
 local branch = {
@@ -65,7 +113,7 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "auto",
+		theme = "onedarker",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
@@ -74,7 +122,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = {},
+		lualine_c = { filename },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
@@ -83,7 +131,6 @@ lualine.setup({
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
 		lualine_x = { "location" },
 		lualine_y = {},
 		lualine_z = {},
