@@ -95,11 +95,11 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
 
-  use  "vimwiki/vimwiki"
+  use  { "vimwiki/vimwiki", opt = true, cmd = { 'VimwikiIndex'} }
 
   use "folke/trouble.nvim"
 
-  use "szw/vim-maximizer"
+  use { "szw/vim-maximizer", opt = true, cmd = { 'MaximizerToggle'} }
 
   use "tpope/vim-surround"
 
@@ -109,6 +109,10 @@ return packer.startup(function(use)
       {'MunifTanjim/nui.nvim'}
     }
   }
+
+  use { 'plasticboy/vim-markdown' }
+
+  use { 'mateusbraga/vim-spell-pt-br' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
