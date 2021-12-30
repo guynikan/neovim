@@ -142,7 +142,8 @@ local mappings = {
   w = {
     name = "+Windows",
     h = { ":sp<CR>", "Split horizontal" },
-    v = { ":vsp<CR>", "Split vertical" }
+    v = { ":vsp<CR>", "Split vertical" },
+    w = { ":VimwikiIndex<CR>", "Vimwiki index" }
   },
 
   l = {
