@@ -44,7 +44,6 @@ local kind_icons = {
   TypeParameter = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
-
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -105,11 +104,15 @@ cmp.setup {
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
+        emoji = "[Emoji]",
+        spell = "[Spell]"
       })[entry.source.name]
       return vim_item
     end,
   },
   sources = {
+    { name = "emoji"},
+    { name = "spell"},
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
@@ -123,7 +126,7 @@ cmp.setup {
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   },
   experimental = {
-    ghost_text = false,
+    ghost_text = true,
     native_menu = false,
   },
 }
