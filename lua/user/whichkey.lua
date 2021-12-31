@@ -133,10 +133,10 @@ local mappings = {
     name = "+Trouble",
     r = { "<cmd>Trouble lsp_references<cr>", "References" },
     f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-    d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnosticss" },
+    d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
     l = { "<cmd>Trouble loclist<cr>", "LocationList" },
     q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Diagnosticss" },
+    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" },
   },
 
   w = {
