@@ -3,29 +3,29 @@ if not status_ok then
 	return
 end
 
+
+if vim.fn.has("win32") == 1 then
+  plugins_count = vim.fn.len(vim.fn.globpath("~/AppData/Local/nvim-data/site/pack/packer/start", "*", 0, 1))
+else
+  plugins_count = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
+end
+
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
-
-  [[                      ▄▄▄▄                      ]],
-  [[                 ╓▄▄▓████████▄▄                 ]],
-  [[               ▄████████████████▄               ]],
-  [[              ▐█████▀▀█████▀█████▌              ]],
-  [[              ║██▌            ▀██▌              ]],
-  [[              ║██▌            ▐██▌              ]],
-  [[              ███              ██▌              ]],
-  [[             ▐█▀██████▄▄▄▄▓█████▀█▌             ]],
-  [[             ▐█H╙▀████▀░╙▀████▀▀╓█▌             ]],
-  [[              ▀█▄             .▄█▀              ]],
-  [[                █▌            ║█¬               ]],
-  [[                ▀█            ██                ]],
-  [[                 ▀█▄▄      ▄▄█▌                 ]],
-  [[                 █████▓▓▓▓█████                 ]],
-  [[        ▄▄▄▄███████████─`▓██████████▄▄▄▄╓       ]],
-  [[    ╓██████████████████████████████████████▄    ]],
-  [[   ╓████████████████████████████████████████▄   ]],
-  [[   ██████████████████████████████████████████   ]],
-  [[   ██████████████████████████████████████████   ]],
-  [[                "▀▀███████████████████████████  ]],
+  [[         ⡆⣐⢕⢕⢕⢕⢕⢕⢕⢕⠅⢗⢕⢕⢕⢕⢕⢕⢕⠕⠕⢕⢕⢕⢕⢕⢕⢕⢕⢕]],
+  [[         ⢐⢕⢕⢕⢕⢕⣕⢕⢕⠕⠁⢕⢕⢕⢕⢕⢕⢕⢕⠅⡄⢕⢕⢕⢕⢕⢕⢕⢕⢕]],
+  [[         ⢕⢕⢕⢕⢕⠅⢗⢕⠕⣠⠄⣗⢕⢕⠕⢕⢕⢕⠕⢠⣿⠐⢕⢕⢕⠑⢕⢕⠵⢕]],
+  [[         ⢕⢕⢕⢕⠁⢜⠕⢁⣴⣿⡇⢓⢕⢵⢐⢕⢕⠕⢁⣾⢿⣧⠑⢕⢕⠄⢑⢕⠅⢕]],
+  [[         ⢕⢕⠵⢁⠔⢁⣤⣤⣶⣶⣶⡐⣕⢽⠐⢕⠕⣡⣾⣶⣶⣶⣤⡁⢓⢕⠄⢑⢅⢑]],
+  [[         ⠍⣧⠄⣶⣾⣿⣿⣿⣿⣿⣿⣷⣔⢕⢄⢡⣾⣿⣿⣿⣿⣿⣿⣿⣦⡑⢕⢤⠱⢐]],
+  [[         ⢠⢕⠅⣾⣿⠋⢿⣿⣿⣿⠉⣿⣿⣷⣦⣶⣽⣿⣿⠈⣿⣿⣿⣿⠏⢹⣷⣷⡅⢐]],
+  [[         ⣔⢕⢥⢻⣿⡀⠈⠛⠛⠁⢠⣿⣿⣿⣿⣿⣿⣿⣿⡀⠈⠛⠛⠁⠄⣼⣿⣿⡇⢔]],
+  [[         ⢕⢕⢽⢸⢟⢟⢖⢖⢤⣶⡟⢻⣿⡿⠻⣿⣿⡟⢀⣿⣦⢤⢤⢔⢞⢿⢿⣿⠁⢕]],
+  [[         ⢕⢕⠅⣐⢕⢕⢕⢕⢕⣿⣿⡄⠛⢀⣦⠈⠛⢁⣼⣿⢗⢕⢕⢕⢕⢕⢕⡏⣘⢕]],
+  [[         ⢕⢕⠅⢓⣕⣕⣕⣕⣵⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣷⣕⢕⢕⢕⢕⡵⢀⢕⢕]],
+  [[         ⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕]],
+  [[         ⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁]],
+  [[         ⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿]],
 
 	[[                               __                ]],
 	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
@@ -34,6 +34,8 @@ dashboard.section.header.val = {
 	[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
 	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
+
+
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -45,18 +47,14 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
--- NOTE: requires the fortune-mod package to work
-	-- local handle = io.popen("fortune")
-	-- local fortune = handle:read("*a")
-	-- handle:close()
-	-- return fortune
-	return ""
+  local datetime = os.date("%d-%m-%Y  %H:%M:%S")
+  return plugins_count .. " plugins  " .. datetime
 end
 
 dashboard.section.footer.val = footer()
 
-dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"
+dashboard.section.footer.opts.hl = "Constant"
 dashboard.section.buttons.opts.hl = "Keyword"
 
 dashboard.opts.opts.noautocmd = true
