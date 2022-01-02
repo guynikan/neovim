@@ -111,12 +111,12 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = "emoji"},
-    { name = "spell"},
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
+    { name = "emoji"},
+    { name = "spell"}
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
