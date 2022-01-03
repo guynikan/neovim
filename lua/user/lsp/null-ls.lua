@@ -12,8 +12,10 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
-		formatting.black.with({ extra_args = { "--fast" } }),
-		formatting.stylua,
+		formatting.eslint,
+    formatting.black.with({ extra_args = { "--fast" } }),
+		formatting.stylua.with({ extra_args = { no_call_parentheses = true}}),
+    diagnostics.eslint,
     -- diagnostics.flake8
 	},
 })
