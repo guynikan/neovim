@@ -198,10 +198,11 @@ local mappings = {
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
+    s = { "<cmd>lua _SPT_TOGGLE()<cr>", "Spotify" },
     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+    m = { "<cmd>lua _CMATRIX_TOGGLE()<cr>", "Cmatrix" },
+    c = { "<cmd>lua _CHTSH_TOGGLE()<cr>", "Cht.sh" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
 }
 
