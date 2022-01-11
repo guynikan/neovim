@@ -19,3 +19,5 @@
                       	/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ 
                       	\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\
                       	 \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/
+
+# My neovim configuration with Lua, based on [ neovim from scratch ](https://github.com/LunarVim/Neovim-from-scratch)
