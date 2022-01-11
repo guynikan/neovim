@@ -4,3 +4,5 @@ quickfix
 Keymaps
 checkhealth
 LSP
+ToggleTerm
+NvimTree
