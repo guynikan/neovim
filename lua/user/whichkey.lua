@@ -80,13 +80,14 @@ local opts = {
 
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
+  ["r"] = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer" },
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
 
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["m"] = { ":MaximizerToggle<CR>", 'Maximizer' },
+  -- ["m"] = { ":MaximizerToggle<CR>", 'Maximizer' },
   ["q"] = { ":q<CR>", "Quit"},
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
@@ -131,35 +132,7 @@ local mappings = {
 
   T = {
     name = "+Trouble",
-    r = { "<cmd>Trouble lsp_references<cr>", "References" },
-    f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
     d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-    l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-    q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" },
-  },
-
-  w = {
-    name = "+Windows",
-    h = { ":sp<CR>", "Split horizontal" },
-    v = { ":vsp<CR>", "Split vertical" },
-    w = { ":VimwikiIndex<CR>", "Vimwiki index" }
-  },
-
-  l = {
-    name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
-      "Document Diagnostics",
-    },
-    w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-      "Workspace Diagnostics",
-    },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {
       "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
       "Next Diagnostic",
@@ -168,9 +141,37 @@ local mappings = {
       "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
       "Prev Diagnostic",
     },
+    l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+    q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" },
+  },
+
+  w = {
+    name = "+Windows",
+    m = { ":FocusMaximise<CR>", "Maximise" },
+    e = { ":FocusEqualise<CR>", "Equalise" },
+    d = { ":FocusToggle<CR>", "Focus Toggle" },
+    h = { ":FocusSplitLeft<CR>", "Split left" },
+    j = { ":FocusSplitDown<CR>", "Split down" },
+    k = { ":FocusSplitUp<CR>", "Split up" },
+    l = { ":FocusSplitRight<CR>", "Split right" },
+    w = { ":VimwikiIndex<CR>", "Vimwiki index" }
+  },
+
+  l = {
+    name = "LSP",
+    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    r = { "<cmd>Trouble lsp_references<cr>", "Find References" },
+    d = { "<cmd>Trouble lsp_definitions<cr>", "Go to Definition" },
+    w = {
+      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+      "Workspace Diagnostics",
+    },
+    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    i = { "<cmd>LspInfo<cr>", "Info" },
+    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     -- s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
     S = {
@@ -181,6 +182,7 @@ local mappings = {
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+    i = { "<cmd>Telescope media_files<cr>", "Media files" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
@@ -197,11 +199,12 @@ local mappings = {
     name = "Terminal",
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-    t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
+    t = { "<cmd>lua _GOTOP_TOGGLE()<cr>", "Gotop" },
     s = { "<cmd>lua _SPT_TOGGLE()<cr>", "Spotify" },
     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
     m = { "<cmd>lua _CMATRIX_TOGGLE()<cr>", "Cmatrix" },
     c = { "<cmd>lua _CHTSH_TOGGLE()<cr>", "Cht.sh" },
+    b = { "<cmd>lua _BC_TOGGLE()<cr>", "bc" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
   },
 }
