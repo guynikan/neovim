@@ -21,8 +21,8 @@ vim.g.maplocalleader = " "
 -- Normal --
 keymap("n", "s", ":w<CR>", opts)
 
-keymap("n", "<C-t", "<cmd>exe v:count . 'ToggleTerm'", opts)
-keymap("t", "<C-t", "<cmd>exe v:count . 'ToggleTerm'", opts)
+keymap("n", "<C-t>", "<cmd>exe v:count . 'ToggleTerm'", opts)
+keymap("t", "<C-t>", "<cmd>exe v:count . 'ToggleTerm'", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)

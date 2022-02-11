@@ -101,8 +101,6 @@ return packer.startup(function(use)
 
   use "folke/trouble.nvim"
 
-  use { "szw/vim-maximizer", opt = true, cmd = { 'MaximizerToggle'} }
-
   use "tpope/vim-surround"
 
   -- Searchbox
@@ -116,7 +114,13 @@ return packer.startup(function(use)
 
   use { 'mateusbraga/vim-spell-pt-br' }
 
-  use { 'sunjon/Shade.nvim' }
+  use { 'beauwilliams/focus.nvim' }
+
+  use { 'norcalli/nvim-colorizer.lua',
+    config = function() require'colorizer'.setup() end
+  }
+
+  use { 'nvim-telescope/telescope-media-files.nvim' }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
