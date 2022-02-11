@@ -63,11 +63,11 @@ function _SPT_TOGGLE()
   spt:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", direction = 'float',  hidden = true, id=1004 })
+local gotop = Terminal:new({ cmd = "gotop", direction = 'float',  hidden = true, id=1004 })
 
 
-function _HTOP_TOGGLE()
-	htop:toggle()
+function _GOTOP_TOGGLE()
+	gotop:toggle()
 end
 
 local python = Terminal:new({ cmd = "python", hidden = true, id=1005 })
@@ -88,4 +88,11 @@ local chtsh = Terminal:new({ cmd = "cht.sh --shell", direction = 'float',  hidde
 
 function _CHTSH_TOGGLE()
 	chtsh:toggle()
+end
+
+
+local bc = Terminal:new({ cmd = "bc", direction = 'float',  hidden = true, id=1007 })
+
+function _BC_TOGGLE()
+	bc:toggle()
 end
