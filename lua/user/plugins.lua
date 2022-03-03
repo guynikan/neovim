@@ -97,7 +97,7 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
 
-  use  { "vimwiki/vimwiki", opt = true, cmd = { 'VimwikiIndex'} }
+  use  { "vimwiki/vimwiki"}
 
   use "folke/trouble.nvim"
 
@@ -121,6 +121,10 @@ return packer.startup(function(use)
   }
 
   use { 'nvim-telescope/telescope-media-files.nvim' }
+
+  use {'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'}
+
+  use { 'rcarriga/nvim-notify'}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
