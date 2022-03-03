@@ -81,15 +81,15 @@ local opts = {
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["r"] = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer" },
-  ["b"] = {
-    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-    "Buffers",
-  },
 
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   -- ["m"] = { ":MaximizerToggle<CR>", 'Maximizer' },
+  ["c"] = {
+    name = "Config",
+    ["r"] = { ":luafile %<CR>", "Reload config" },
+    ["c"] = { ":vsplit | e $HOME/.config/nvim/init.lua<CR>", "Reload config" },
+  },
   ["q"] = { ":q<CR>", "Quit"},
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
@@ -97,6 +97,23 @@ local mappings = {
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+
+  b = {
+    name = "Buffer",
+    ["b"] = {
+      "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      "Buffers"},
+    ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    ["h"] = { "<cmd>BufferLineCloseLeft<cr>", "Close buffer left"},
+    ["l"] = { "<cmd>BufferLineCloseRight<cr>", "Close buffer left"},
+    ["p"] = { "<cmd>BufferLinePick<cr>", "Pick buffer"},
+    ["t"] = {
+      name = "Toggle groups",
+      ["d"] = { "<cmd>BufferLineGroupToggle Docs<cr>", "Docs"},
+      ["c"] = { "<cmd>BufferLineGroupToggle Config<cr>", "Config"},
+      ["t"] = { "<cmd>BufferLineGroupToggle Tests<cr>", "Tests"},
+    }
+  },
 
   p = {
     name = "Packer",
@@ -146,16 +163,25 @@ local mappings = {
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace diagnostics" },
   },
 
+  v = {
+    name = "Vimwiki",
+
+    w = { ":VimwikiIndex<CR>", "Vimwiki index" },
+    n = { ":VimwikiMakeDiaryNote<CR>", "Diary note" },
+    d = { ":VimwikiDeleteFile<CR>", "Delete file" },
+    t = { ":VimwikiTable ", "Create table" },
+    c = { ":VimwikiTOC<CR>", "Create TOC" },
+  },
+
   w = {
     name = "+Windows",
     m = { ":FocusMaximise<CR>", "Maximise" },
     e = { ":FocusEqualise<CR>", "Equalise" },
-    d = { ":FocusToggle<CR>", "Focus Toggle" },
+    f = { ":FocusToggle<CR>", "Focus Toggle" },
     h = { ":FocusSplitLeft<CR>", "Split left" },
     j = { ":FocusSplitDown<CR>", "Split down" },
     k = { ":FocusSplitUp<CR>", "Split up" },
     l = { ":FocusSplitRight<CR>", "Split right" },
-    w = { ":VimwikiIndex<CR>", "Vimwiki index" }
   },
 
   l = {
@@ -183,7 +209,7 @@ local mappings = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     i = { "<cmd>Telescope media_files<cr>", "Media files" },
-    c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+    c = { "<cmd>Telescope command_history<cr>", "Command history" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     o = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
