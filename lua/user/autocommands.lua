@@ -36,6 +36,12 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
+  augroup _vimwiki
+    autocmd!
+    autocmd BufWinEnter ~/vimwiki/* :set updatetime=5000
+    autocmd BufWinLeave ~/vimwiki/* :set updatetime=300
+  augroup end
+
 ]]
 
 function _G.execute_external_command()
@@ -69,8 +75,8 @@ function _G.git_commit()
   return _G.execute_external_command()
 end
 
-vim.cmd('autocmd BufWinEnter ~/vimwiki/* lua vim.notify(git_pull()["message"], git_pull()["shell_error"],  { title = "GIT"})')
-vim.cmd('autocmd BufWritePost ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT"})')
+vim.cmd('autocmd BufWinEnter ~/vimwiki/* lua vim.notify(git_pull()["message"], git_pull()["shell_error"],  { title = "GIT PULL"})')
+vim.cmd('autocmd CursorHold,BufWinLeave ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT COMMIT"})')
 
 
 -- Autoformat
