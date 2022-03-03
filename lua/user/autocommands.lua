@@ -76,7 +76,7 @@ function _G.git_commit()
 end
 
 vim.cmd('autocmd BufWinEnter ~/vimwiki/* ++once lua vim.notify(git_pull()["message"], git_pull()["shell_error"],  { title = "GIT PULL"})')
-vim.cmd('autocmd CursorHold,BufWinLeave ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT COMMIT"})')
+vim.cmd('autocmd CursorHold ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT COMMIT"})')
 
 
 -- Autoformat
