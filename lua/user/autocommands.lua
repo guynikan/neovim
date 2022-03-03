@@ -1,10 +1,12 @@
 vim.cmd [[
   augroup _general_settings
     autocmd!
+    autocmd VimEnter * :packadd cfilter
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
+    autocmd BufWritePost ~/.config/nvim/*
   augroup end
 
   augroup _git
@@ -33,7 +35,43 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+
 ]]
+
+function _G.execute_external_command()
+  local shell_error = vim.v.shell_error
+
+  if vim.v.shell_error == 0 then
+    shell_error = "success"
+  else
+    shell_error = "error"
+  end
+
+  local output = vim.g._command_output
+  vim.g._command_output = nil
+
+  output = {
+    shell_error = shell_error,
+    message = output
+  }
+  return output
+end
+
+function _G.git_pull()
+  vim.cmd("let g:_command_output=system('git pull --ff-only')")
+
+  return _G.execute_external_command()
+end
+
+function _G.git_commit()
+  vim.cmd("let g:_command_output=system('git add --all  && git commit -m \"🤖 - Auto commit of \"'..shellescape(expand(\"<afile>:t\")))")
+
+  return _G.execute_external_command()
+end
+
+vim.cmd('autocmd BufWinEnter ~/vimwiki/* lua vim.notify(git_pull()["message"], git_pull()["shell_error"],  { title = "GIT"})')
+vim.cmd('autocmd BufWritePost ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT"})')
+
 
 -- Autoformat
 -- augroup _lsp
