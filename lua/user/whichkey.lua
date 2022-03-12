@@ -112,6 +112,13 @@ local mappings = {
       ["d"] = { "<cmd>BufferLineGroupToggle Docs<cr>", "Docs"},
       ["c"] = { "<cmd>BufferLineGroupToggle Config<cr>", "Config"},
       ["t"] = { "<cmd>BufferLineGroupToggle Tests<cr>", "Tests"},
+    },
+    ["T"] = {
+      name = "Tabs",
+      ["n"] = { ":tab split<cr>", "New tab"},
+      ["c"] = { ":tabclose<cr>", "Close tab"},
+      ["l"] = { ":tabnext<cr>", "Next tab"},
+      ["h"] = { ":tabprevious<cr>", "Previous tab"},
     }
   },
 
