@@ -64,17 +64,26 @@ function _G.execute_external_command()
 end
 
 function _G.git_pull()
-  vim.cmd("let g:_command_output=system('git pull --ff-only')")
+  if(string.find(vim.api.nvim_buf_get_name(0), 'vimwiki') ~= nil) then
+    vim.cmd("let g:_command_output=system('git pull --ff-only')")
+    return _G.execute_external_command()
+  end
 
-  return _G.execute_external_command()
+  return 'Diretório errado'
+
 end
 
 function _G.git_commit()
-  vim.cmd("let g:_command_output=system('git add --all  && git commit -m \"🤖 - Auto commit of \"'..shellescape(expand(\"<afile>:t\")))")
+  if(string.find(vim.api.nvim_buf_get_name(0), 'vimwiki') ~= nil) then
+    vim.cmd("let g:_command_output=system('git add --all  && git commit -m \"🤖 - Auto commit of \"'..shellescape(expand(\"<afile>:t\")))")
+    return _G.execute_external_command()
+  end
 
-  return _G.execute_external_command()
+  return 'Diretório errado'
+
 end
 
+-- ajustar pra check de dir (garantir que o commit refere-se sempre ao ~/vimwiki/)
 vim.cmd('autocmd BufWinEnter ~/vimwiki/* ++once lua vim.notify(git_pull()["message"], git_pull()["shell_error"],  { title = "GIT PULL"})')
 vim.cmd('autocmd CursorHold ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT COMMIT"})')
 
