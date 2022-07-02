@@ -87,12 +87,12 @@ local mappings = {
   ["c"] = {
     name = "Config",
     ["r"] = { ":luafile %<CR>", "Reload config" },
-    ["c"] = { ":vsplit | e $HOME/.config/nvim/init.lua<CR>", "Reload config" },
+    ["c"] = { ":vsplit | e $HOME/.config/nvim/init.lua<CR>", "Edit config" },
   },
   ["q"] = { ":q<CR>", "Quit"},
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false, hidden = true})<cr>",
     "Find files",
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
@@ -105,7 +105,7 @@ local mappings = {
       "Buffers"},
     ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
     ["h"] = { "<cmd>BufferLineCloseLeft<cr>", "Close buffer left"},
-    ["l"] = { "<cmd>BufferLineCloseRight<cr>", "Close buffer left"},
+    ["l"] = { "<cmd>BufferLineCloseRight<cr>", "Close buffer right"},
     ["p"] = { "<cmd>BufferLinePick<cr>", "Pick buffer"},
     ["t"] = {
       name = "Toggle groups",
@@ -149,7 +149,7 @@ local mappings = {
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
     d = {
-      "<cmd>Gitsigns diffthis HEAD<cr>",
+      "<cmd>DiffviewOpen<cr>",
       "Diff",
     },
   },
@@ -173,7 +173,9 @@ local mappings = {
   v = {
     name = "Vimwiki",
 
-    w = { ":VimwikiIndex<CR>", "Vimwiki index" },
+    w = { ":VimwikiIndex<CR>", "Index" },
+    i = { ":VimwikiDiaryIndex<CR>", "Diary index" },
+    g = { ":VimwikiDiaryGenerateLinks<CR>", "Generate diary links" },
     n = { ":VimwikiMakeDiaryNote<CR>", "Diary note" },
     d = { ":VimwikiDeleteFile<CR>", "Delete file" },
     t = { ":VimwikiTable ", "Create table" },
@@ -207,6 +209,7 @@ local mappings = {
     R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     -- s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
     s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature help" },
+    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
     S = {
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
@@ -220,7 +223,7 @@ local mappings = {
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     o = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    f = { "<cmd>Telescope find_files<cr>", "Find file" },
+    f = { "<cmd>lua require('telescope.builtin').find_files({hidden = true})<cr>", "Find file" },
     r = { ":SearchBoxReplace confirm=menu<CR>", "Replace" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },

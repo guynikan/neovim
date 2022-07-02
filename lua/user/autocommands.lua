@@ -6,7 +6,6 @@ vim.cmd [[
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
-    autocmd BufWritePost ~/.config/nvim/*
   augroup end
 
   augroup _git
@@ -38,8 +37,7 @@ vim.cmd [[
 
   augroup _vimwiki
     autocmd!
-    autocmd BufWinEnter ~/vimwiki/* :set updatetime=5000
-    autocmd BufWinLeave ~/vimwiki/* :set updatetime=300
+    autocmd BufWinEnter ~/vimwiki/* :set updatetime=1000000
   augroup end
 
 ]]
@@ -83,10 +81,8 @@ function _G.git_commit()
 
 end
 
--- ajustar pra check de dir (garantir que o commit refere-se sempre ao ~/vimwiki/)
-vim.cmd('autocmd BufWinEnter ~/vimwiki/* ++once lua vim.notify(git_pull()["message"], git_pull()["shell_error"],  { title = "GIT PULL"})')
-vim.cmd('autocmd CursorHold ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT COMMIT"})')
-
+-- vim.cmd('autocmd BufWinEnter ~/vimwiki/* ++once lua vim.notify(git_pull()["message"], git_pull()["shell_error"],  { title = "GIT PULL"})')
+-- vim.cmd('autocmd CursorHold ~/vimwiki/* lua vim.notify(git_commit()["message"], "success", {title = "GIT COMMIT"})')
 
 -- Autoformat
 -- augroup _lsp

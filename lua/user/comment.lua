@@ -4,6 +4,13 @@ if not status_ok then
 end
 
 comment.setup {
+ ---LHS of toggle mappings in NORMAL + VISUAL mode
+  ---@type table
+  toggler = {
+      ---Line-comment toggle keymap
+      line = '\\',
+  },
+
   pre_hook = function(ctx)
     local U = require "Comment.utils"
 

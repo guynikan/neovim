@@ -2,6 +2,7 @@ vim.g.markdown_folding = 1
 vim.g.vimwiki_global_ext = 0
 vim.g.vimwiki_list = {
   {
+    diary_caption_level  = -1,
     path = '~/vimwiki/',
     path_html = '~/vimwiki/HTML/',
     auto_export = 0,
